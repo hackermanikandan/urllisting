@@ -1,6 +1,6 @@
 import requests
 
-site = input("Enter youer site name > ")
+site = raw_input("Enter youer site name > ")
 
 new = open('urls.txt','w')
 
