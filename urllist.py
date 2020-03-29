@@ -14,5 +14,5 @@ try:
 
         if r.ok:
             print('http://'+site+'/'+x)
-except:
+except KeyboardInterrupt:
     exit()
