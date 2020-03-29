@@ -1,8 +1,6 @@
 import requests
 
-#site = input("Enter youer site name")
-
-site = "google.com"
+site = input("Enter youer site name > ")
 
 mylist = open('wordlist.txt','r+')
 
