@@ -18,7 +18,7 @@ if len(sys.argv) <= 1:
     print(using)
     exit()
 
-def request(domain_name):
+def request(domain_name,out_file):
     try:
         #host_ip = socket.gethostbyname(domain_name)
         req = requests.get(domain_name,timeout=2)
@@ -36,22 +36,22 @@ def request(domain_name):
     except requests.exceptions.ConnectionError:
         print("[-] Domain Connection Error! :{}".format(domain_name))
 
-def url(wordlist,domain):
+def url(wordlist,domain,out_file):
     for one_line in wordlist:
                 one_line = one_line.strip()
                 domain_name = ('http://{}/{}'.format(domain,one_line))
-                request(domain_name)
-def domainlist(wordlist,domain):
+                request(domain_name,out_file)
+def domainlist(wordlist,domain,out_file):
     for one_line in wordlist:
                 one_line = one_line.strip()
                 domain_name = ('http://{}.{}'.format(one_line,domain))
-                request(domain_name)
+                request(domain_name,out_file)
                 print(new)
 
 def main():
     print(banner)
     domain = sys.argv[2]  
-    out_file = open('urls.txt','w')
+    out_file = open('live_urls.txt','w')
     try:
         if len(sys.argv[3]) != None:
             word = sys.argv[3]
@@ -60,9 +60,9 @@ def main():
         print('use default wordlist\n')
     wordlist = open(word,'r+')
     if sys.argv[1] == 'dir':
-        url(wordlist,domain)
+        url(wordlist,domain,out_file)
     elif sys.argv[1] == 'dns':
-        domainlist(wordlist,domain)
+        domainlist(wordlist,domain,out_file)
     else:
         print(using)
 
