@@ -24,7 +24,7 @@ def request(domain_name):
         req = requests.get(domain_name,timeout=2)
         if req.ok:
             print('[+] 200 :'+req.url)
-            #out_file.write(req.url+'\n')
+            out_file.write(req.url+'\n')
         else:
             print('[-] 404 :'+domain_name)
     except KeyboardInterrupt:
@@ -51,7 +51,7 @@ def domainlist(wordlist,domain):
 def main():
     print(banner)
     domain = sys.argv[2]  
-    #out_file = open('urls.txt','w')
+    out_file = open('urls.txt','w')
     try:
         if len(sys.argv[3]) != None:
             word = sys.argv[3]
