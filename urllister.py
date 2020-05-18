@@ -23,7 +23,7 @@ if len(sys.argv) <= 1:
 
 def request(domain_name,out_file):
     try:
-        req = requests.get(domain_name,timeout=2)
+        req = requests.head(domain_name,timeout=2)
         if req.ok:
             if sys.argv[1] == 'dnsip':
                 url1 = ((req.url).find("//"))
